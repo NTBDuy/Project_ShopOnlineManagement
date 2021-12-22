@@ -1,0 +1,23 @@
+<div class="container w-75" xmlns:th="http://www.thymeleaf.org" style="height: 30px; padding-left: 20px;">
+    <div class="row">
+        <div class="col">
+            <ul th:if="${#request.remoteUser}" class="nav navbar-nav justify-content-end">
+                <li class="nav-item"><a class="nav-link text-success" href="#">Xin chào <span id="username">[[${#request.userPrincipal.name}]]</span></a></li>
+            </ul>
+            <ul style="list-style: none;" th:unless="${#request.remoteUser}">
+                <li class="nav-item "><a class="nav-link text-warning" href="#">Xin chào bạn chưa đăng nhập!</a></li>
+            </ul>
+        </div>
+        <div class="col mt-2 text-center">
+            <span th:text="${message}" style="color: red; font: bold;"></span> 
+        </div>
+        <div class="col text-end">
+            <!-- <div class="mt-2" id="current-time">
+
+            </div>  -->
+            <div class="mt-2">
+                <span>{{time | date : 'hh:mm a - dd/mm/yyyy'}}</span>
+            </div>  
+        </div>
+    </div>
+</div>

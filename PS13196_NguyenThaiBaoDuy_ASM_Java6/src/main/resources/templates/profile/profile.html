@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/shop :: dynamic(~{::main})}">
+
+<body>
+    <!-- <main>
+        <input type="text" ng-model="items.username">
+        <p>{{items.username}}</p>
+    </main>  -->
+
+    <main th:object="${item}">
+        <section>
+            <div class="container bannershop p-5">
+                <div class="row p-4 text-center mx-auto">
+                    <H4>HỒ SƠ CỦA BẠN</H4>
+                </div>
+                <div class="row  d-flex justify-content-center">
+                    <div class="col w-100">
+                        <nav class=" d-flex justify-content-center"
+                            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+                            aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a style="font-size: 20px;" th:href="@{/index}">Trang
+                                        chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px;">Hồ sơ
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-4">
+                <div class="row d-flex justify-content-center">
+                    <div class="d-flex align-items-start">
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                                aria-selected="true">Hồ sơ</button>
+                            <button ng-click="edit()" class="nav-link" id="v-pills-profile-tab"
+                                data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
+                                aria-controls="v-pills-profile" aria-selected="false">Chỉnh sửa</button>
+                            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
+                                data-bs-target="#v-pills-messages" type="button" role="tab"
+                                aria-controls="v-pills-messages" aria-selected="false">Lịch sử đơn hàng</button>
+                        </div>
+                        <div class="tab-content w-100" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
+
+                                <div class="row mx-auto" style="width: 80%;">
+                                    <div class="col-md-4 border-right">
+                                        <div class="d-flex flex-column align-items-center text-center p-3 py-3"><img
+                                                class="rounded-circle mt-5"
+                                                ng-src="{{'/assets/images/imageUser/' + items.photo}}" width="180"><span
+                                                class="font-weight-bold">{{items.username}}</span><span
+                                                class="text-black-50">{{items.email}}</span></div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="p-3 py-5">
+                                            <div class="row mt-1">
+                                                <div class="col mb-4">
+                                                    <div class="form-floating">
+                                                        <input name="fullname" type="text" class="form-control" readonly
+                                                            value="{{items.fullname}}" id="floating" placeholder="...">
+                                                        <label for="floating">Họ và tên</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1">
+                                                <div class="col mb-4">
+                                                    <div class="form-floating">
+                                                        <input name="email" type="email" class="form-control" readonly
+                                                            value="{{items.email}}" id="floatingA" placeholder="...">
+                                                        <label for="floatingA">Email</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1">
+                                                <div class="col mb-4">
+                                                    <div class="form-floating">
+                                                        <input name="username" type="text" class="form-control" readonly
+                                                            value="{{items.username}}" id="floatingB" placeholder="...">
+                                                        <label for="floatingB">Tên đăng nhập</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+
+                                <div class="row mx-auto" style="width: 80%;">
+                                    <div class="col-md-4 border-right">
+                                        <div class="d-flex flex-column align-items-center text-center p-3 py-3 mt-5"><img
+                                                class="rounded-circle mt-5" ng-src="{{'/assets/images/imageUser/' + items.photo}}"
+                                                width="180">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <form name="frmprofile">
+                                            <div class="p-3 py-5">
+                                                <div class="row mt-2 mb-2">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input name="fullname" type="text" required class="form-control"
+                                                            ng-model="form.fullname" id="floating" placeholder="...">
+                                                            <label for="floating">Họ và tên</label>
+                                                        </div>
+                                                        <div style="color: red; text-align: center;" ng-hide="frmprofile.fullname.$valid">Vui lòng nhập họ tên!</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input name="email" required type="email" class="form-control"
+                                                            ng-model="form.email" id="floatingA" placeholder="...">
+                                                            <label for="floatingA">Email</label>
+                                                        </div>
+                                                        <div style="color: red; text-align: center;" ng-hide="frmprofile.email.$valid">Sai định dạng email!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-2 mb-2">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input name="username" required type="text" class="form-control"
+                                                            ng-model="form.username" id="floatingB" placeholder="...">
+                                                            <label for="floatingB">Tên đăng nhập</label>
+                                                        </div>
+                                                        <div style="color: red; text-align: center;" ng-hide="frmprofile.username.$valid">Vui lòng nhập tên đăng nhập!</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating">
+                                                            <input name="password" required type="password" class="form-control"
+                                                            ng-model="form.password" id="floatingB" placeholder="...">
+                                                            <label for="floatingB">Mật khẩu</label>
+                                                        </div>
+                                                        <div style="color: red; text-align: center;" ng-hide="frmprofile.password.$valid">Vui lòng nhập mật khẩu!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-6">
+                                                        <label>Hình ảnh: </label>
+                                                        <div class="form-group mb-3">
+                                                            <input type="file" class="form-control" nid="image"
+                                                                onchange="angular.element(this).scope().imageChanged(this.files)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" mt-3">
+                                                    <div class="col-sm-3 mx-auto">
+                                                        <button ng-click="update()" class="btn btn-outline-success w-100" id="btnSave">Lưu thay
+                                                            đổi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                                aria-labelledby="v-pills-messages-tab">
+                                <div class="col">
+                                    <div class="row py-4">
+                                        <h6>DANH SÁCH ĐƠN HÀNG ĐÃ ĐẶT</h6>
+                                    </div>
+                                    <div class="listcart">
+                                        <table class="table text-center tableGioHang">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Mã hoá đơn</th>
+                                                    <th scope="col">Ngày đặt</th>
+                                                    <th scope="col">Địa chỉ giao hàng</th>
+                                                    <th scope="col">Chi tiết</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="order, state : ${orders}">
+                                                    <td class="py-5">[[${state.index}]]</td>
+                                                    <td class="py-5">[[${order.id}]]</td>
+                                                    <td class="py-5">[[${order.createDate}]]</td>
+                                                    <td class="py-5">[[${order.address}]]</td>
+                                                    <td class="py-5 text-end"><a
+                                                            th:href="@{|/order/detail/${order.id}|}"
+                                                            class="btn btn-outline-primary"><i
+                                                                class="bi bi-search"></i></a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+</body>
+
+</html>

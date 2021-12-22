@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/shop :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <section>
+            <div class="container bannershop p-5">
+                <div class="row p-4 text-center mx-auto">
+                    <H4>LỊCH SỬ ĐẶT HÀNG</H4>
+                </div>
+                <div class="row  d-flex justify-content-center">
+                    <div class="col w-100">
+                        <nav class=" d-flex justify-content-center"
+                            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+                            aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a style="font-size: 20px;" th:href="@{/index}">Trang
+                                        chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px;">Lịch sử
+                                    đặt hàng</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-4">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-10">
+                        <div class="row py-4">
+                            <h6>DANH SÁCH ĐƠN HÀNG ĐÃ ĐẶT</h6>
+                        </div>
+                        <div class="listcart">
+                            <table class="table text-center tableGioHang">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Mã hoá đơn</th>
+                                        <th scope="col">Ngày đặt</th>
+                                        <th scope="col">Địa chỉ giao hàng</th>
+                                        <th scope="col">Chi tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="order, state : ${orders}">
+                                        <td class="py-5">[[${state.index}]]</td>
+                                        <td class="py-5">[[${order.id}]]</td>
+                                        <td class="py-5">[[${order.createDate}]]</td>
+                                        <td class="py-5">[[${order.address}]]</td>
+                                        <td class="py-5 text-end"><a th:href="@{|/order/detail/${order.id}|}" class="btn btn-outline-primary"><i class="bi bi-search"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-11 text-end">
+                        <a class="btn btn-outline-success mb-2" th:href="@{/index}">Quay trở lại trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

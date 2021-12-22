@@ -1,0 +1,32 @@
+<div class="container-fluid px-4">
+    <h3 class="mt-4">BẢNG THỐNG KÊ</h3>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="container main mx-auto mt-4">
+                <div class="row main-header text-start p-2">
+                    <h4>TỒN KHO THEO LOẠI</h4>
+                </div>
+                <div class="row main-body">
+                    <table class="table text-center p-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Loại hàng</th>
+                                <th scope="col">Tổng giá</th>
+                                <th scope="col">Số sản phẩm tồn kho</th>
+                            </tr>
+                        </thead>
+                        <tbody">
+                            <c:forEach var="item" items="${items}">
+                                <tr ng-repeat="item in items">
+                                    <td>{{item.group.name}}</td>
+                                    <td><span>$</span>{{item.sum}}</td>
+                                    <td>{{item.count}}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

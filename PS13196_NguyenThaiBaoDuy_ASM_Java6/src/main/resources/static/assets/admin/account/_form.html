@@ -1,0 +1,86 @@
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h4 class="mt-4 mb-4">Thêm hoặc chỉnh sửa tài khoản</h4>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header text-center" style="background-color: #fff;">
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="d-flex flex-column align-items-center text-center"><img class="mt-4"
+                                ng-src="{{'/assets/images/imageUser/' + form.photo}}" width="240"></div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <form name="frmAcc">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="txtUser" ng-model="form.username" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="name" />
+                                    <label for="floatingInput">Tên tài khoản</label>
+                                </div>
+                                <div style="color: red; text-align: center;" ng-hide="frmAcc.txtUser.$valid">Vui lòng nhập tên tài khoản!</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="txtmk" ng-model="form.password" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="price" />
+                                    <label for="floatingInput">Mật khẩu</label>
+                                <div style="color: red; text-align: center;" ng-hide="frmAcc.txtmk.$valid">Vui lòng nhập mật khẩu!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="txthoten" required ng-model="form.fullname" type="text" class="form-control" id="floatingInput"
+                                        placeholder="name" />
+                                    <label for="floatingInput">Họ và tên</label>
+                                    <div style="color: red; text-align: center;" ng-hide="frmAcc.txthoten.$valid">Vui lòng nhập họ và tên!</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="txtmail" ng-model="form.email" type="email" class="form-control" id="floatingInput"
+                                        placeholder="price" />
+                                    <label for="floatingInput">Email</label>
+                                    <div style="color: red; text-align: center;" ng-hide="frmAcc.txthoten.$valid">Định dạng email chưa đúng!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Hình ảnh: </label>
+                                <div class="form-group mb-3">
+                                    <input type="file" class="form-control" nid="image"
+                                        onchange="angular.element(this).scope().imageChanged(this.files)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mx-auto text-center">
+                            <div class="col-sm-12 text-center">
+                                <button ng-click="create()" class="btn btn-primary">
+                                    <b class="glyphicon glyphicon-plus"></b> Create
+                                </button>
+                                <button ng-click="update()" class="btn btn-success">
+                                    <b class="glyphicon glyphicon-save"></b> Update
+                                </button>
+                                <button ng-click="delete(form)" class="btn btn-danger">
+                                    <b class="glyphicon glyphicon-trash"></b> Delete
+                                </button>
+                                <button ng-click="reset()" class="btn btn-info">
+                                    <b class="glyphicon glyphicon-refesh"></b> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/signin.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body class="text-center">
+    <main class="form-signin">
+        <form th:action="@{/security/register}" method="post" name="frmDK">
+            <h1 class="h3 mb-3 fw-normal"><img src="/assets/images/logo/LogoMobileStore_White.png" width="72" alt="">
+            </h1>
+            <h5 style="color: red;" th:text="${message}"></h5>
+            <p>Đăng kí tài khoản của bạn một cách nhanh chóng sau khi điền các thông tin dưới
+                đây nha.</p>
+            <div>
+                <div class="form-floating mb-1">
+                    <input name="fullname" required type="text" class="form-control" id="floatingInput"
+                        placeholder="...." />
+                    <label for="floatingInput">Họ và tên</label>
+                </div>
+                <!-- <div style="color: red; text-align: center;" ng-hide="frmDK.txtName.$valid">Vui lòng nhập họ và tên!</div> -->
+            </div>
+            <div class="form-floating mb-1">
+                <input name="email" required type="email" class="form-control" id="floatingInput" placeholder="...." />
+                <label for="floatingInput">Mail của bạn</label>
+            </div>
+            <!-- <div style="color: red; text-align: center;" ng-hide="frmDK.email.$valid">Sai định dạng email!</div> -->
+            <div class="form-floating mb-1">
+                <input name="username" required type="text" class="form-control" id="floatingInput"
+                    placeholder="...." />
+                <label for="floatingInput">Tên đăng nhập</label>
+            </div>
+            <!-- <div style="color: red; text-align: center;" ng-hide="frmDK.username.$valid">Vui lòng nhập tên tài khoản!
+            </div> -->
+            <div class="form-floating mb-1">
+                <input name="password" type="password" class="form-control" id="floatingInput" placeholder="...." />
+                <label for="floatingInput">Mật khẩu</label>
+            </div>
+            <!-- <div style="color: red; text-align: center;" ng-hide="frmDK.password.$valid">Vui lòng nhập mật khẩu!</div> -->
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Đăng kí</button>
+
+            <div class="row pt-2"><a th:href="@{/security/login/form}" class="text-decoration-none link-secondary">Quay
+                    trở lại trang đăng nhập.</a></div>
+            <p class="mt-5 mb-3 text-muted">&copy; 2021 - PS13196 - JAVA6</p>
+        </form>
+    </main>
+</body>
+
+</html>

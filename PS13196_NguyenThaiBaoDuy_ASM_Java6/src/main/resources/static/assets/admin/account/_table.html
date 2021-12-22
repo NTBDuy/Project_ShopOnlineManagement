@@ -1,0 +1,72 @@
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between">
+        <div class="py-4">
+            <h4 class="mt-4 mb-4">Quản lý tài khoản</h4>
+        </div>
+        <div class="py-4 me-4">
+            <form class="mt-4" ng-submit="search()">
+                <div class="input-group">
+                    <input id="searchName" ng-model="searchName" ng-change="search()" type="text" class="form-control"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button type="submit" ng-click="" class="btn btn-outline-secondary" id="button-addon2"><i
+                            class="bi bi-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <i class="fas fa-table me-1"></i> Danh sách tài khoản
+                </div>
+                <div class="col">
+                    <!-- <p class="m-0" style="color: red;">#thongbao</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên tài khoản</th>
+                        <!-- <th scope="col">Mật khẩu</th> -->
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Hình</th>
+                        <th scope="col">Sửa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in pager.items| filter:searchName">
+                        <td class="py-5">{{item.username}}</td>
+                        <!-- <td class="py-5">{{item.password}}</td> -->
+                        <td class="py-5">{{item.fullname}}</td>
+                        <td class="py-5">{{item.email}}</td>
+                        <td class="py-5">{{item.photo}}</td>
+                        <td class="py-5">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <button ng-click="edit(item)" type="button" class="btn btn-outline-warning"><i
+                                        class="bi bi-pencil-square"></i></button>
+                                <button ng-click="delete(item)" type="button" class="btn btn-outline-danger"><i
+                                        class="bi bi-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <hr />
+            <div class="text-center">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button ng-click="pager.first()" type="button" class="btn btn-outline-secondary"><i class="bi bi-caret-left"></i><i class="bi bi-caret-left"></i></button>
+                    <button ng-click="pager.prev()" type="button" class="btn btn-outline-secondary"><i class="bi bi-caret-left"></i></button>
+                    <button type="button" class="btn btn-outline-secondary">{{pager.page+1}} of {{pager.count}}</button>
+                    <button ng-click="pager.next()" type="button" class="btn btn-outline-secondary"><i class="bi bi-caret-right"></i></button>
+                    <button ng-click="pager.last()" type="button" class="btn btn-outline-secondary"><i class="bi bi-caret-right"></i><i class="bi bi-caret-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

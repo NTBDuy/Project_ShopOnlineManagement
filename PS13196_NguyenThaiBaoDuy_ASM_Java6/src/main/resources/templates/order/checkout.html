@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/shop :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <section>
+            <div class="container bannershop p-5">
+                <div class="row p-4 text-center mx-auto">
+                    <H4>TIẾN HÀNH THANH TOÁN</H4>
+                </div>
+                <div class="row  d-flex justify-content-center">
+                    <div class="col w-100">
+                        <nav class=" d-flex justify-content-center"
+                            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+                            aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a style="font-size: 20px;" th:href="@{/index}">Trang
+                                        chủ</a></li>
+                                <li class="breadcrumb-item " aria-current="page" style="font-size: 20px;"><a
+                                        style="font-size: 20px;" th:href="@{/cart/view}">Giỏ
+                                        hàng</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px;">Thanh
+                                    toán</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-4">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="row py-4">
+                            <h5>Số lượng sản phẩm: <span>{{cart.count}}</span></h5>
+                        </div>
+                        <!-- <div th:replace="~{/cart/view :: shopping-cart}"></div> -->
+                        <div class="listcart">
+                            <table class="table text-center tableGioHang">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Hình</th>
+                                        <th scope="col">Sản phẩm</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in cart.items">
+                                        <td class="text-center"><img
+                                                th:src="@{|/assets/images/imageproduct/{{item.image}}|}" alt="..."
+                                                height="100px" width="100px"></td>
+                                        <td class="py-5" style="width: 20%;">{{item.name}}</td>
+                                        <td class="py-5">{{item.price | number : 2}}</td>
+                                        <td class="py-5">{{item.qty}}</td>
+                                        <td class="py-5">{{item.qty*item.price | number : 2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
+                        <div class="row mt-3">
+                            <div class="col">
+                                <a class="btn btn-outline-warning mb-2" th:href="@{/cart/view}">Chỉnh sửa giỏ hàng</a>
+                            </div>
+                            <!-- <div class="col-4 text-end">
+                                <button class="btn btn-outline-danger mb-2" ng-click="cart.clear()">Xoá toàn bộ
+                                    giỏ hàng</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 pt-4">
+                        <div class="row">
+                            <div class="card py-4 px-1">
+                                <div class="card-body">
+                                    <h5>Xác nhận đơn hàng</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-2">
+                                            Tổng tiền
+                                            <span>{{cart.amount | number : 2}} $</span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-2">
+                                            Số lượng
+                                            <span>{{cart.count}}</span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center px-0 pb-2">
+                                            Phí vận chuyển
+                                            <span>Free</span>
+                                        </li>
+                                        <li
+                                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-1">
+                                            <div>
+                                                <strong>Tổng tiền thanh toán</strong>
+                                                <strong>
+                                                    <p class="mb-0">(Đã bao gồm VAT)</p>
+                                                </strong>
+                                            </div>
+                                            <span><strong>{{cart.amount | number : 2}} $</strong></span>
+                                        </li>
+                                    </ul>
+                                    <div class="card border-1 mb-2">
+                                        <div class="card-body">
+                                            <span>Tên tài khoản: <span id="username">[[${#request.remoteUser}]]</span></span>
+                                            <!-- <div class="form-control" id="username">[[${#request.remoteUser}]]</div> -->
+                                        </div>
+                                    </div>
+                                    <div class="card border-1 mb-2">
+                                        <div class="card-body">
+                                            <span>Ngày đặt: {{order.createDate | date:'dd-MM-yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-2 pb-2">
+                                        <textarea ng-model="order.address" class="form-control"
+                                            placeholder="Leave a comment here" id="floatingTextarea2"
+                                            style="height: 100px"></textarea>
+                                        <label for="floatingTextarea2">Địa chỉ của bạn</label>
+                                    </div>
+                                    <button ng-click="order.purchase()"
+                                        class="btn btn-outline-primary w-100 btn-block waves-effect waves-light">Xác
+                                        nhận mua hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

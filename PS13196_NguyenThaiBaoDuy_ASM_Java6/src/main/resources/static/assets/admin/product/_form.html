@@ -1,0 +1,104 @@
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h4 class="mt-4 mb-4">Thêm hoặc chỉnh sửa sản phẩm</h4>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header text-center" style="background-color: #fff;">
+        </div>
+        <div class="card-body">
+            <form name="frmPro">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="d-flex flex-column align-items-center text-center"><img class="mt-4"
+                                    ng-src="{{'/assets/images/imageproduct/' + form.image}}" width="240"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input ng-model="form.name" name="txtname" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="name" />
+                                    <label for="floatingInput">Tên</label>
+                                </div>
+                                <div style="color: red; text-align: center;" ng-hide="frmPro.txtname.$valid">Vui lòng nhập tên sản phẩm!</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input ng-model="form.price" name="txtprice" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="price" />
+                                    <label for="floatingInput">Giá</label>
+                                </div>
+                                <div style="color: red; text-align: center;" ng-hide="frmPro.txtprice.$valid">Vui lòng nhập giá sản phẩm!</div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <label>Hình ảnh: </label>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" nid="image"
+                                        onchange="angular.element(this).scope().imageChanged(this.files)" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Danh mục: </label>
+                                <select ng-model="form.category.id" name="cate" required class="form-select" aria-label="Default select example">
+                                    <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                                </select>
+                                <div style="color: red; text-align: center;" ng-hide="frmPro.cate.$valid">Vui lòng chọn danh mục!</div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <label>Ngày tạo: </label>
+                                    <div class="input-group">
+                                        <input ng-model="form.createDate" name="txtDate" required type="date" class="form-control"
+                                            placeholder="createDate" />
+                                    </div>
+                                    <div style="color: red; text-align: center;" ng-hide="frmPro.txtDate.$valid">Vui lòng nhập ngày!</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 pt-4">
+                                <div class="pt-2">
+                                    <label class="form-label">Khả dụng: &nbsp;</label>
+                                    <div class="form-check form-check-inline">
+                                        <input ng-model="form.available" ng-value="true" name="available"
+                                            class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Có</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input ng-model="form.available" ng-value="false" name="available"
+                                            class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Không</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3 mx-auto text-center">
+                            <div class="col-sm-12 text-center">
+                                <button ng-click="create()" class="btn btn-primary">
+                                    <b class="glyphicon glyphicon-plus"></b> Create
+                                </button>
+                                <button ng-click="update()" class="btn btn-success">
+                                    <b class="glyphicon glyphicon-save"></b> Update
+                                </button>
+                                <button ng-click="delete(form)" class="btn btn-danger">
+                                    <b class="glyphicon glyphicon-trash"></b> Delete
+                                </button>
+                                <button ng-click="reset()" class="btn btn-info">
+                                    <b class="glyphicon glyphicon-refesh"></b> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

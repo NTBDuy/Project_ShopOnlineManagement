@@ -1,0 +1,54 @@
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h4 class="mt-4 mb-4">Thêm hoặc chỉnh sửa danh mục</h4>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header text-center" style="background-color: #fff;">
+        </div>
+        <div class="card-body">
+            <form name="frmCate">
+                <div class="row">
+                    <div class="col">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input ng-model="form.id" name="txtid" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="price" />
+                                    <label for="floatingInput">Mã</label>
+                                </div>
+                                <div style="color: red; text-align: center;" ng-hide="frmCate.txtid.$valid">Vui lòng nhập mã danh mục!</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input ng-model="form.name" name="txtnamecate" required type="text" class="form-control" id="floatingInput"
+                                        placeholder="name" />
+                                    <label for="floatingInput">Tên</label>
+                                </div>
+                                <div style="color: red; text-align: center;" ng-hide="frmCate.txtnamecate.$valid">Vui lòng nhập tên danh mục!</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3 mx-auto text-center">
+                            <div class="col-sm-12 text-center">
+                                <button ng-click="create()" class="btn btn-primary">
+                                    <b class="glyphicon glyphicon-plus"></b> Create
+                                </button>
+                                <button ng-click="update()" class="btn btn-success">
+                                    <b class="glyphicon glyphicon-save"></b> Update
+                                </button>
+                                <button ng-click="delete(form)" class="btn btn-danger">
+                                    <b class="glyphicon glyphicon-trash"></b> Delete
+                                </button>
+                                <button ng-click="reset()" class="btn btn-info">
+                                    <b class="glyphicon glyphicon-refesh"></b> Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="pt-2" xmlns:th="http://www.thymeleaf.org">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Danh mục
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body p-0">
+                <ul class="list-group list-group-flush">
+                    <a th:each="c : ${cates}" th:href="@{|/shop?cid=${c.id}|}" class="list-group-item list-group-item-action">[[${c.name}]]</a>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

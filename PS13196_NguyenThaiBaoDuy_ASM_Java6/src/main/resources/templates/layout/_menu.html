@@ -1,0 +1,59 @@
+<div class="row mx-auto p-0 sticky-top" xmlns:th="http://www.thymeleaf.org">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container w-75">
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img src="/assets/images/logo/LogoMobileStore_Clear.png" width="50px" height="50px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                        <li><a th:href="@{/index}" class="nav-link px-2 text-white">Trang chủ</a></li>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" th:href="@{/shop}">Cửa hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" th:href="@{/contact}">Liên hệ</a>
+                        </li>
+                    </ul>
+                    <form action="/shop/search" method="post" class="d-flex">
+                        <div class="input-group me-3">
+                            <input name="keywords" value="" type="text" class="form-control"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i
+                                    class="bi bi-search"></i></button>
+                        </div>
+                        <a th:href="@{/cart/view}" class="btn btn-outline-secondary me-3"><i
+                                class="bi bi-cart"></i></a>
+                    </form>
+                    <div class="dropdown text-end">
+
+                        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/assets/images/imageUser/user.png" width="32" height="32"
+                                class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small text-center" aria-labelledby="dropdownUser1">
+                            <th:block th:if="${#request.remoteUser}">
+                                <li><a ng-click="showhoso()" class="dropdown-item" th:href="@{/order/list}">Hồ sơ</a></li>
+                                <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+                                    <a class="dropdown-item" th:href="@{/admin/home/index}">Admin</a>
+                                </li>
+                                <li><a class="dropdown-item" th:href="@{/security/logoff}">Đăng xuất</a></li>
+                            </th:block>
+                            <th:block th:unless="${#request.remoteUser}">
+                                <li><a class="dropdown-item" th:href="@{/security/login/form}">Đăng nhập</a></li>
+                            </th:block>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
